@@ -1,0 +1,22 @@
+<div #container class="container-md overflow-auto">
+    <div class="w-50">
+        <ng-container *ngFor="let data of mockData">
+            <ng-container *ngIf="data.user_id === 'testUser'">
+                <div class="bg-info message-box">
+                    <ng-container [ngTemplateOutlet]="messageBox" [ngTemplateOutletContext]="{$implicit: data}">
+                    </ng-container>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="data.gender === 'female'">
+                <div class="bg-success ms-auto message-box">
+                    <ng-container [ngTemplateOutlet]="messageBox" [ngTemplateOutletContext]="{$implicit: data}">
+                    </ng-container>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #messageBox let-data>
+    <span>{{data.message}}</span>
+</ng-template>
